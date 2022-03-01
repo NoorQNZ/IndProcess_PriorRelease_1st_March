@@ -1,0 +1,998 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* css reset*/
+
+:root {
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+}
+
+
+* {
+	box-sizing : border-box;
+	margin:0;
+	padding:0;
+}
+
+body {	
+	font-family: 'Roboto', sans-serif;
+	line-height:1.4;
+}
+
+a {
+	text-decoration:none;
+}
+
+/* adding margin to paragraph since css reset takes margin away */
+
+p {
+	margin : 0.75rem 0;
+}
+
+/* Utility Classes */ 
+
+.container {
+	max-width: 1100px; /* it helps to make the content/text as responsive. */
+	margin: auto; /* It helps to center the container by providing the equal amount of righ & left mar
+					 margin : auto is applicable on display : block property*/
+	padding:0 2rem;
+	overflow:hidden;  /* it removed in case of any scroll bar to display the data.*/
+}
+
+.text-center {
+	text-align:center;
+}
+
+.text-primary {
+	color : #F8AE20;
+}
+
+.text-secondary {
+	color : #B2B3B3;
+}
+
+.bg-light {
+	background: #f4f4f4; /* white */
+	color : #333;  /* dark */
+}
+
+.bg-dark {
+	background: #333; /* dark */
+	color : #fff; /* white */
+}
+
+.bg-primary {
+	background: #F8AE20; /* brand color */
+	color : #fff; /* white */
+}
+
+.l-heading {
+	font-size: 2.5rem;
+	margin-bottom:0.75rem;
+	line-height:1.1;
+}
+
+.m-heading {
+	font-size: 2rem;
+	margin-bottom:0.75rem;
+	line-height:1.1;
+}
+
+mrd-heading {
+	font-size: 3rem;
+	line-height:1.1;
+}
+
+.s-heading {
+	font-size: 1.3rem;
+	margin-bottom:0.75rem; 
+}
+
+.lead {
+	font-size: 1.3rem;
+	margin-bottom: 2rem;
+}
+
+.plead {
+	font-size: 1;
+	margin-bottom: 0.4rem;
+}
+
+.py-1 {padding : 1.5rem 0;}
+.py-2 {padding : 2rem 0;}
+.py-3 {padding : 3rem 0;}
+
+.p-1 {padding : 1.5rem;}
+.p-2 {padding : 2rem;}
+.p-3 {padding : 3rem;}
+
+/* .pyt-1 {padding-top : 1.5rem 0;} */
+
+.btn {
+	display: inline-block;
+	color: #fff;
+	background: #F8AE20;
+	padding: 0.5rem 2rem;
+	border: none;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	background:#ff9c00;
+}
+
+.btn-dark {
+	background: #333;
+	color: #fff;
+}
+
+.list {
+	margin : 0.5rem 0.5rem;
+	list-style: none;	
+}
+
+.list li {
+	padding : 0.5rem ;
+	/*border-bottom : #444 dotted 3px; */
+}
+
+/* Navbar */ 
+
+#navbar {
+	display:flex;
+	flex-wrap : wrap;
+	position:sticky;
+	top:0;
+	background:#333;
+	color:#fff;
+	justify-content: space-between;
+	z-index: 1; /* we need our nav items should bet at the top of everything when we scroll down */
+	padding : 1rem;
+}
+
+#navbar .logo  img{
+    width : 170px;
+	height: auto;
+}
+
+#navbar ul {
+	display: flex;
+	align-items: center;
+	list-style:none;
+}
+
+#navbar ul li a {
+	color : #fff;
+	padding : 0.75rem;
+	margin: 0 0.25rem;
+}
+
+#navbar ul li a:hover {
+	background: #F8AE20;  /* brand color */
+	border-radius: 10px;
+}
+
+/* Hamburger 
+.hamburger {
+	background-color: transparent;
+	border: 0;
+	display:none;
+	color :#fff;
+	cursor: pointer;
+	font-size : 1.4rem;
+}
+
+.hamburger:focus {
+	outline:none;
+}
+
+*/
+
+/* New customized hamburger css code */ 
+
+
+
+.slider {
+	position: relative;
+	overflow:hidden;
+	height: 100vh;
+	/*width: 100vw; */
+	background: #333;
+	color: #fff;
+	overflow-x: hidden;
+}
+
+.slide {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0px;
+	width:100%;
+	height: 100%;
+    opacity: 0;
+	transition: opacity 0.4s ease-in-out;
+}
+
+.slide.current {
+	opacity:1;	
+}
+
+.slide .content {
+	display:flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content:center;
+	align-items: center;	
+	position: absolute;
+	top: 72pxpx;
+	left : 0px;
+	right : 0px;
+	botton: 0px;
+	background-color: rgba(0,0,0,0.05);
+	height: 100%;	
+}
+/*
+.buttons #next {
+	position: absolute;
+	top:75%;
+	right: 47%;
+}
+
+.buttons #prev {
+	position: absolute;
+	top:75%;
+	left: 47%;
+}
+
+ We should not remove this because it's for slider buttons
+.buttons button {
+	border : 1.5px solid #fff;
+	background-color: transparent; 
+	background-color: rgba(255,255,255,0.5);  
+	color: #fff;
+	cursor: pointer;
+	padding: 0.5rem 0.6rem;
+	border-radius: 50%;
+	outline:none;
+} 
+
+.buttons button:hover {
+	background-color: #fff;
+	color : #333;
+}
+*/
+.buttons {
+	display:none;
+}
+ 
+/* Background images */ 
+
+.slide:first-child {
+	background: url('../img/showcase1.jpg') no-repeat center center/cover;
+}
+
+.slide:nth-child(2) {
+	background: url('../img/showcase.jpeg') no-repeat center center/cover;
+}
+
+.slide:nth-child(3) {
+	background: url('../img/showcase2.jpg') no-repeat center center/cover;
+}
+
+
+/* ScrollTop Feature  */
+
+#btnScrolltoTop  {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	width: 50px;
+	height : 50px;
+	border : none;
+    border-radius : 50%;
+	background: #F8AE20;
+	box-shadow: 0 0 10px rgba(0,0,0,0.25);
+	color: #333;
+	outline: none;
+	cursor:pointer;
+}
+
+#btnScrolltoTop:active {
+	background:#ff9c00;
+}
+
+/* Services (Tabs) we do */ 
+#tabs {
+	border-bottom: 3px solid #3d3d3d;
+}
+
+#tabs .container {
+	display:grid;
+	grid-template-columns: repeat(3,1fr);
+	grid-gap: 1rem;
+	alig-items:center;
+	justify-content:space-evenly;
+	text-align:center;
+	text-transform:uppercase; 
+}
+
+#tabs .container >div:hover {
+    color: #F8AE20; 
+	pointer:cursor;
+}
+
+.tab-border {
+	border-bottom: #F8AE20 2px solid;
+}
+
+
+/* Hide the product list initially */ 
+
+#tab-1-content, 
+#tab-2-content, 
+#tab-3-content,
+#tab-4-content {
+	display:none;
+}
+
+.show {
+	display: block !important;
+}
+
+.tab-content-item .tab-content-bottom {
+	display:grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 2rem;
+	justify-content: center;
+	alig-items: center;
+	text-align: center;
+	cursor:pointer;
+}
+
+
+.tab-content-item .tab-content-bottom .image-wrapper {
+     width:294px; 
+	 height:198px;   	
+}
+.tab-content-item .tab-content-bottom .image-wrapper-nes{
+     width:391px; 
+	 height:266px;   	
+}
+
+.tab-content-item .tab-content-bottom .containerTab .inner-content {
+	display:grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 5rem;
+	/*justify-content: center;
+	align-items: center;
+	text-align: justify; */
+	justify-content: center;
+	alig-items: center;
+	text-align: center;
+}
+
+ol {
+  list-style: none;
+  counter-reset: steps;
+  margin-left: 1rem;
+}
+ ol li {
+  text-align: justify;
+  padding-left: 0.6rem;
+} 
+ol li::before {
+  content: ""; 
+  margin-right: 0.5rem;
+  background: #F8AE20;
+  color: white;
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: left;
+  line-height: 1.5em;
+}
+
+.table {
+	width:100%;
+	border-collapse:collapse;
+	border: 1px solid white;
+}
+
+.table thead th{
+	text-transform: uppercase;
+	padding: 0.4rem;
+	border: 1px solid white;
+	border-collapse:collapse;
+	
+}
+
+
+
+.table thead th:first-child {
+	text-align: center;
+}
+
+.table tbody tr td{
+	border: 1px solid white;
+	border-collapse:collapse;
+}
+
+
+.table tbody tr td{
+	/* color:#999; */
+	padding: 0.4rem 0.8rem;
+	text-align: center;
+}
+
+
+
+
+/*ol ol li::before {
+  background: darkorchid;
+} */
+
+/*
+.imgsec{
+    width : 1000px;
+	height: auto;
+} */
+
+.containerTab {
+  padding: 20px;
+  color: white;
+  display:none;
+}
+
+.closebtn {
+  float: right;
+  font-size: 30px;
+  cursor: pointer;
+  background: #F8AE20;
+  color: #333;
+  width: 1.3em;
+  height: 1.4em;
+  border-radius: 40%;
+} 
+
+/* 
+.tab-content-item .tab-content-bottom .content-wrapper {
+	width: 90%;
+    margin: 5% 10% 5% 10%; 
+} 
+
+.tab-content-item .tab-content-bottom .content-wrapper img{
+	width: 90%; 
+} 
+
+.tab-content-item .tab-content-bottom .text-wrapper {
+	text-align:top;
+}
+*/
+
+
+/* Section: AboutUs (Who we are) */  
+
+#About {
+	position : relative;
+}
+#About .About-Items-main{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start; /* align items horizontally */ 
+	/* align-items:flex-start;  align items vertically  & there must be height */
+	animation : slideInFromLeft 1s ease-in;
+}
+
+#About .About-Items-main .About-text {
+	flext : 1;
+	text-align:left;
+	padding: 1rem;
+}
+#About .About-Items-submain{
+	display: flex;
+	justify-content: flex-end; /* align items horizontally */ 
+	/* align-items: center;  align items vertically  & there must be height */
+}
+
+#About .About-Items-submain .About-text {
+	 flext:1;            /*  to equally distribute the items horizontally with the proper spacing */
+	text-align:center;
+	padding: 1rem;
+	margin: 1rem 0 0 0; 
+}
+
+
+#About .About-Items-submain .item-2 {
+	margin-right:0.5rem;
+}
+
+#About .card {
+	background-color: #333;
+	border-radius : 5px;
+	color: #fff;
+	box-shadow : 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Teams Section */
+
+.wrapper{
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    margin: 0px auto;
+} 
+
+
+.about-info img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+#team .wrapper .cards-container {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	grid-gap: 30px;
+}
+
+.cards:nth-child(1) .front-card{
+	background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5)), url('../img/person1.jpg') no-repeat center center/cover;
+}
+
+.cards:nth-child(2) .front-card{
+	background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5)), url('../img/person2.jpg') no-repeat center center/cover;
+}
+
+.cards:nth-child(3) .front-card{
+	background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5)), url('../img/person3.jpg') no-repeat center center/cover;
+}
+
+.cards{
+    height: 420px;
+    perspective: 1000px;
+}
+
+
+.card-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.5);
+}
+
+.cards:hover .card-wrapper{
+    transform: rotateY(180deg);
+}
+
+.front-card, .rear-card{
+    border-radius: 4px;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.rear-card{
+    text-align: center;
+    transform: rotateY(180deg);
+    background: #F8AE20;
+    color: #fff;
+    padding: 1.2rem;
+}
+
+.front-card div{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.rear-card p{
+    line-height: 1.6;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.about-info{
+    margin-top: 1.1rem;
+}
+
+.about-info div h2{
+    font-size: 1.2rem;
+    padding: 10px 0 2px;
+}
+
+
+#RD {
+	border-bottom : 5px solid #F8AE20;
+}
+
+#RDLab {
+	display: flex;
+}
+
+#RDLab div {
+	flex : 1;
+}
+
+#RDLab .RD-img {
+	background: url('../img/LabImage.jpg') no-repeat center center/cover;
+}
+
+
+/* Section: Contacts  */
+
+#contact .class-container .form {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+
+.contact-info {
+  padding: 2.3rem 2.2rem;
+  position: relative;
+}
+
+#contact .s-heading .text {
+	font-size: 1.2rem;
+	color:#fff;
+}
+
+#contact .s-heading .text {
+	font-size: 1.2rem;
+	color:#fff;
+}
+
+.text {
+  color: #333;
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.information {
+  display: flex;
+  color: #555;
+  margin: 0.7rem 0;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.info .information i {
+	margin-right: 0.75rem;
+}
+
+.info .information i {
+  color: #F8AE20;
+  margin-right: 0.5rem;
+}
+
+
+.social-media {
+  padding: 2rem 0 0 0;
+}
+
+.social-media p {
+  color: #333;
+}
+
+.social-media .social-icons {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.social-media .social-icons a {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #F8AE20, #F8AE20);
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 0.5rem;
+  transition: 0.3s;
+}
+
+.social-media .social-icons a i {
+	font-size: 1rem;
+}
+
+.social-media .social-icons a:hover {
+  transform: scale(1.15);
+}
+
+/* It's contact form styling css code 
+
+#contact .contact-form {
+  background-color: #F8AE20; 
+  position: relative;
+}
+
+#contact .contact-form form {
+  padding: 2.3rem 2.2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+#contact .contact-form .input-container {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.contact-info .title {
+  color: #F8AE20;
+}
+
+.title1 {
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1;
+  margin-top: 2rem;
+  color: #F8AE20;
+}
+
+.title {
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+#contact .contact-form .input-container .input {
+  width: 100%;
+  outline: none;
+  border: 2px solid #fafafa;
+  background: none;
+  padding: 0.6rem 1.2rem;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+textarea.input {
+  padding: 0.8rem 1.2rem;
+  min-height: 150px;
+  border-radius: 22px;
+  resize: none;
+  overflow-y: auto;
+}    */ 
+
+
+
+/*Commenting for time being, later need to investigate
+#contact .contact-form .input-container label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  padding: 0 0.4rem;
+  color: #fafafa;
+  font-size: 1rem;
+  font-weight: 400;
+  pointer-events: none;
+  transition: 0.5s; 
+
+}
+
+.input-container.focus label {
+     display:none;	
+}
+
+#contact .contact-form .input-container.textarea label {
+  top: 1rem;
+  transform: translateY(0);
+}
+
+#contact .contact-form form .btn {
+  padding: 0.6rem 1.3rem;
+  background-color: #fff;
+  border: 2px solid #fafafa;
+  font-size: 0.95rem;
+  color: #F8AE20;
+  line-height: 1;
+  border-radius: 25px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0;
+}
+
+#contact .contact-form form .btn:hover {
+  background-color: transparent;
+  color: #fff;
+}
+
+#contact .contact-form .input-container span {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  padding: 0 0.4rem;
+  color: transparent;
+  pointer-events: none;
+  z-index: 500;
+}
+
+#contact .contact-form .input-container span:before,
+#contact .contact-form .input-container span:after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  opacity: 0;
+  transition: 0.3s;
+  height: 5px;
+  background-color: #F8AE20;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#contact .contact-form .input-container span:before {
+  left: 50%;
+}
+
+#contact .contact-form .input-container span:after {
+  right: 50%;
+}
+
+.input-container.focus label {
+  top: 0;
+  transform: translateY(-50%);
+  left: 25px;
+  font-size: 0.8rem;
+}
+
+.input-container.focus span:before,
+.input-container.focus span:after {
+  width: 50%;
+  opacity: 1;
+}
+
+ */
+
+/* New contact form to use here */
+
+#contact .contact-form {
+  background-color: #F8AE20; 
+}
+
+.testform {
+  padding: 30px 40px;
+}
+
+.form-control {
+  margin-bottom: 15px;
+  padding-bottom: 10px; 
+  position: relative;
+}
+
+.form-control label {
+  color: #777;
+  display: block;
+  margin-bottom: 5px; 
+}
+
+.form-control input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.form-control input:focus {
+  outline: 0;
+  border-color: #777;
+}  
+
+.form-control.success input {
+  border-color: var(--success-color);
+}
+
+.form-control.error input {
+  border-color: var(--error-color);
+}
+
+.form-control.success textarea {
+  border-color: var(--success-color);
+}
+
+.form-control.error textarea {
+  border-color: var(--error-color);
+}
+
+.form-control small {
+  color: var(--error-color);
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  visibility: hidden;
+}
+
+.form-control.error small {
+  visibility: visible;
+}
+
+.testform button {
+  cursor: pointer;
+  background-color: #fff;
+  border: 2px solid #fff;
+  color: #F8AE20;
+  border-radius: 4px;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+.testform button:hover {
+	background-color: #F8AE20;
+	color: #333;
+}
+
+.testform textarea {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+/* Animations */ 
+
+@keyframes slideInFromLeft {
+	0% {
+		transform : translateX(-100%);
+	}
+	
+	100% {
+		transform : translateX(0);
+	}
+}
+
+@keyframes slideInFromRight {
+	0% {
+		transform : translateX(100%);
+	}
+	
+	100% {
+		transform : translateX(0);
+	}
+}
+
+@keyframes slideInFromTop {
+	0% {
+		transform : translateY(-100%);
+	}
+	
+	100% {
+		transform : translateX(0);
+	}
+}
+
+@keyframes slideInFromBottom {
+	0% {
+		transform : translateY(100%);
+	}
+	
+	100% {
+		transform : translateX(0);
+	}
+}
